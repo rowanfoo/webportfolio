@@ -41,7 +41,7 @@ pipeline {
                echo "ALL IS DONE"
                  script {
                     sh 'docker rm -f webportfolio'
-                    sh """docker run -d --restart=unless-stopped --name webportfolio  -p 11000:4200 localhost:5000/rowanf/webportfolio"""
+                    sh """docker run -d --restart=unless-stopped --name webportfolio  -p 12000:4200 localhost:5000/rowanf/webportfolio"""
                 }
             }
        }
