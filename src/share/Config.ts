@@ -6,6 +6,6 @@ export class Config {
 //  static trackerurl = 'http://localhost:8080/tracker'
   static trackerurl = Config.rooturl + '/tracker';
 
-
+  static portfoliourl = Config.rooturl
 }
 
