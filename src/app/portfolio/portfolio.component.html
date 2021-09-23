@@ -1,0 +1,61 @@
+<!--<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">-->
+
+
+<!--  <thead>-->
+<!--  <tr>-->
+<!--    <th>code</th>-->
+<!--    <th>quantity</th>-->
+<!--    <th>price</th>-->
+<!--    <th>source</th>-->
+
+<!--  </tr>-->
+<!--  </thead>-->
+
+<!--  <tbody>-->
+
+<!--  <tr *ngFor="let datas of  portfolio">-->
+<!--    <td>{{datas.code}}</td>-->
+<!--    <td>{{datas.quantity}}</td>-->
+<!--    <td>{{datas.price}}</td>-->
+<!--    <td>{{datas.source}}</td>-->
+<!--  </tr>-->
+
+
+<!--  </tbody>-->
+
+
+<!--</table>-->
+
+
+<table datatable [dtOptions]="dtOptions" class="row-border hover">
+  <thead>
+  <tr>
+    <th>code</th>
+    <th>quantity</th>
+    <th>avg price</th>
+    <th>total</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let datas of  portfolio">
+    <td>{{datas.code}}</td>
+    <td>{{datas.quantity   | number:'1.0':'en-US'}}</td>
+    <td>{{datas.price | number : '1.2-2' }}</td>
+    <td>${{datas.quantity * datas.price   | number:'1.0':'en-US' }}$ ---
+      {{ ((datas.quantity * datas.price) / 400000) * 100   | number : '1.2-2':'en-US'}} %
+    </td>
+  </tr>
+
+  </tbody>
+</table>
+
+
+Total:$ {{total  | number:'1.0':'en-US' }}
+<br>
+Free:$ {{400000 - total   | number:'1.0':'en-US'}}
+<br>
+Invested:{{ (total / 400000) * 100    | number : '1.2-2':'en-US' }} %
+<br>
+Free:{{ ((400000 - total) / 400000) * 100  | number : '1.2-2' :'en-US'}} %
+
+
