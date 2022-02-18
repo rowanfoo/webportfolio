@@ -18,9 +18,9 @@ pipeline {
     stages {
         stage('Check out') {
             steps {
-                sh 'echo hello internal deploy'
-                sh 'pwd'
-                 sh 'docker ps -a'
+                 echo 'deploy portfolio-webserver'
+                 bat 'cd ,'
+                 bat 'docker ps -a'
             }
         }
 
@@ -29,7 +29,7 @@ pipeline {
                 script {
                    image_name="localhost:5000/rowanf/webportfolio"
                    dockerImage =  docker.build (image_name)
-                    sh 'pwd'
+                    bat 'cd ,'
                      dockerImage.push()
 
                 }
@@ -40,8 +40,10 @@ pipeline {
             steps {
                echo "ALL IS DONE"
                  script {
-                    sh 'docker rm -f webportfolio'
-                    sh """docker run -d --restart=unless-stopped --name webportfolio  -p 12000:4200 localhost:5000/rowanf/webportfolio"""
+
+                  bat 'docker rm -f webportfolio'
+                  bat """docker run -d --restart=unless-stopped --name webportfolio  -p 12000:4200 localhost:5000/rowanf/webportfolio"""
+
                 }
             }
        }
